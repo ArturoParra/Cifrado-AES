@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/cryo.ico">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/normalizar.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+    <script src="assets/js/FileSaver.js"></script>
+    <script src="assets/js/aes.js"></script>
+    <title>Cifrado</title>
+</head>
+
+<body>
+    <h1>CIFRADO AES</h1>
+
+    <h2>Texto a cifrar</h2>
+    <div class="container">
+        <textarea name="mensaje" id="contenido-archivo" cols="80" rows="0" ></textarea>
+    </div>
+
+    <h2>Llave de cifrado</h2>
+    <div class="container">
+        <textarea name="password" id="demo1" cols="80" rows="0"></textarea>
+    </div>
+
+    <h2>Elija el tipo de cifrado</h2>
+    <div class="container">
+        <button class="btn btn1" onclick="validar()">128</button>
+        <button class="btn btn1" onclick="validar2()">192</button>
+        <button class="btn btn1" onclick="validar3()">256</button>
+    </div>
+
+    <h2>Vista previa</h2>
+    <div class="container">
+        <textarea id="demo32" cols="80" rows="0" placeholder="Mensaje original" readonly></textarea>
+    </div>
+    <div class="container">
+        <textarea id="saldjp" cols="80" rows="0" placeholder="Mensaje cifrado" readonly></textarea>
+    </div>
+
+    <h2>Tipo de archivo</h2>
+    <div class="container">
+        <button id="f" class="btn btn1">PDF</button>
+        <button id="d" class="btn btn1">DOC</button>
+        <button id="s" class="btn btn1">TXT</button>
+    </div>
+    <br>
+    <div id="arrow_right">
+        <a href="descifrar.html"  aria-label="Página para descifrar">
+            <button><i class="fas fa-lock-open"></i> Descifrar</button>
+        </a>
+    </div>
+    <br>
+    <img src="assets/img/descarga.gif" width="500" height="525">
+
+    <footer>
+        Desarrollado por: Parra Rivas Arturo Gabriel Grupo: 5IV8
+    </footer>
+
+    
+
+    <script>
+        $("#s").click(function () {
+            var cth = document.getElementById("saldjp").value;
+            var blob = new Blob([cth], { type: "text/plain;charset=utf-8" });
+            if (cth == "") {
+                alert("Antes, cifra tu mensaje.");
+            } else {
+                saveAs(blob, "Mensaje.txt");
+            }
+        });
+    </script>
+    <script>
+        $("#d").click(function () {
+            var cth = document.getElementById("saldjp").value;
+            var blob = new Blob([cth], { type: "text/plain;charset=utf-8" });
+            if (cth == "") {
+                alert("Antes, ingresa un mensaje.");
+            } else {
+                saveAs(blob, "Mensaje.doc");
+            }
+        });
+    </script>
+    <script>
+        $("#f").click(function () {
+            var cth = document.getElementById("saldjp").value;
+            var blob = new Blob([cth], { type: "text/plain;charset=utf-8" });
+            if (cth == "") {
+                alert("Antes, ingresa un mensaje.");
+            } else {
+                saveAs(blob, "Mensaje.pdf");
+            }
+        });
+    </script>
+</body>
+
+</html>
